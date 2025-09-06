@@ -3,300 +3,557 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Nishi - Software Developer Portfolio</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./tailwind.config.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+   
+        
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=mail" />
+     <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'space': ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 1s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .text-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass-effect {
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .dark .hover-lift:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #4f46e5;
+            white-space: nowrap;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #4f46e5; }
+        }
+
+        /* Dark mode icon filtering */
+        .dark .icon-filter {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Transition for smooth dark mode toggle */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 transition duration-300">
+<body class="font-inter bg-gray-50 dark:bg-gray-900 dark:text-white transition duration-300 overflow-x-hidden">
+
     <!-- Navigation Bar -->
-    <nav class="w-full fixed px-5 lg:px-16 py-4 flex items-center justify-between bg-white bg-opacity-80 shadow-md z-20">
-        <img src="./images/logo.png" alt="Logo" class="w-28 cursor-pointer">
+    <nav class="w-full fixed px-5 lg:px-16 py-4 flex items-center justify-between glass-effect z-20">
+        <div class="text-2xl font-space font-bold text-gradient">Nishi.dev</div>
         
         <!-- Desktop Menu -->
-        <ul class="hidden md:flex items-center gap-6 lg:gap-10 bg-white bg-opacity-50 shadow-md px-8 py-3 rounded-full">
-            <li><a href="#top" class="hover:text-blue-500">Home</a></li>
-            <li><a href="#about" class="hover:text-blue-500">About Me</a></li>
-            <li><a href="#projects" class="hover:text-blue-500">My Work</a></li>
-            <li><a href="#contact" class="hover:text-blue-500">Contact Me</a></li>
-            <li><a href="#services" class="hover:text-blue-500">Services</a></li>
+        <ul class="hidden md:flex items-center gap-8 glass-effect px-8 py-3 rounded-full">
+            <li><a href="#top" class="hover:text-indigo-600 transition-colors duration-300 font-medium text-gray-800 dark:text-white">Home</a></li>
+            <li><a href="#about" class="hover:text-indigo-600 transition-colors duration-300 font-medium text-gray-800 dark:text-white">About</a></li>
+            <li><a href="#projects" class="hover:text-indigo-600 transition-colors duration-300 font-medium text-gray-800 dark:text-white">Projects</a></li>
+            <li><a href="#contact" class="hover:text-indigo-600 transition-colors duration-300 font-medium text-gray-800 dark:text-white">Contact</a></li>
+            <li><a href="#services" class="hover:text-indigo-600 transition-colors duration-300 font-medium text-gray-800 dark:text-white">Services</a></li>
         </ul>
         
         <!-- Right Icons -->
         <div class="flex items-center gap-4">
-            <button id="dark-mode-toggle">
-                <img src="./images/moon_icon.png" alt="Dark Mode" class="w-6">
-            </button>
-            <button id="menu-btn" class="block md:hidden">
-                <img src="./images/menu-black.png" alt="Menu" class="w-6">
+           
+            <button id="menu-btn" class="block md:hidden p-2">
+                <div class="w-6 h-0.5 bg-gray-800 dark:bg-white mb-1"></div>
+                <div class="w-6 h-0.5 bg-gray-800 dark:bg-white mb-1"></div>
+                <div class="w-6 h-0.5 bg-gray-800 dark:bg-white"></div>
             </button>
         </div>
     </nav>
-    
+
     <!-- Mobile Menu -->
-    <div id="side-menu" class="fixed top-0 right-0 w-64 h-full bg-white text-black shadow-lg transform translate-x-full transition-transform duration-300 flex flex-col gap-6 p-6 md:hidden z-50">
-        <button id="close-btn" class="self-end">
-            <img src="./images/close-black.png" alt="Close" class="w-5">
-        </button>
-        <ul class="flex flex-col gap-4" id="side-menu-items">
-            <li><a href="#top" class="hover:text-blue-500">Home</a></li>
-            <li><a href="#about" class="hover:text-blue-500">About Me</a></li>
-            <li><a href="#projects" class="hover:text-blue-500">My Work</a></li>
-            <li><a href="#contact" class="hover:text-blue-500">Contact Me</a></li>
-            <li><a href="#services" class="hover:text-blue-500">Services</a></li>
+    <div id="side-menu" class="fixed top-0 right-0 w-64 h-full glass-effect text-gray-800 dark:text-white shadow-lg transform translate-x-full transition-transform duration-300 flex flex-col gap-6 p-6 md:hidden z-50">
+        <button id="close-btn" class="self-end text-2xl">×</button>
+        <ul class="flex flex-col gap-4">
+            <li><a href="#top" class="hover:text-indigo-600 transition-colors duration-300 font-medium">Home</a></li>
+            <li><a href="#about" class="hover:text-indigo-600 transition-colors duration-300 font-medium">About</a></li>
+            <li><a href="#projects" class="hover:text-indigo-600 transition-colors duration-300 font-medium">Projects</a></li>
+            <li><a href="#contact" class="hover:text-indigo-600 transition-colors duration-300 font-medium">Contact</a></li>
+            <li><a href="#services" class="hover:text-indigo-600 transition-colors duration-300 font-medium">Services</a></li>
         </ul>
     </div>
     
     <!-- Header Section -->
-    <div class="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col justify-center items-center gap-4">
-        <img src="./images/profile-img.png" alt="Profile Image" class="w-32 rounded-full shadow-lg">
-        <h3 class="text-lg font-semibold">Hi! I'm Nishi <img src="./images/hand-icon.png" alt="Hand Icon" class="w-6 inline"></h3>
-        <h1 class="text-5xl font-bold">Aspiring Software Developer</h1>
-        <p class="text-gray-700 text-lg max-w-md">I'm a B.Tech student at KIET Group of Institutions, learning DSA and web development.</p>
-        <div class="flex gap-5 mt-4">
-            <a href="#contact" class="px-6 py-2 text-white text-lg font-semibold rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 transition flex items-center gap-2">
-                <img src="./images/right-arrow-bold-dark.png" alt="" class="w-3"> Contact Me
-            </a>
-            <a href="#" id="resume-btn" class="px-6 py-2 text-black text-lg font-semibold rounded-full border-2 border-gray-900 flex items-center gap-2 hover:bg-gray-200 transition">
-                <img src="./images/download-icon.png" alt="" class="w-3"> My Resume
-            </a>
+    <div class="w-full max-w-6xl text-center mx-auto h-screen flex flex-col justify-center items-center gap-6 px-4 relative z-10">
+        <div class="space-y-4 animate-fade-in">
+            <h3 class="text-xl font-space font-semibold text-gray-700 dark:text-gray-300 flex items-center justify-center gap-2">
+                Hi! I'm Nishi <span class="animate-bounce">👋</span>
+            </h3>
+            
+            <h1 class="text-4xl lg:text-7xl font-space font-bold text-gray-900 dark:text-white leading-tight">
+                <span class="text-gradient">Crafting Digital</span><br>
+                <span class="typewriter inline-block">Experiences</span>
+            </h1>
+            
+            <p class="text-gray-600 dark:text-gray-400 text-lg lg:text-xl max-w-2xl leading-relaxed">
+                🚀 Passionate <span class="font-semibold text-indigo-600">Software Developer</span> & 
+                <span class="font-semibold text-purple-600">Problem Solver</span><br>
+                Transforming ideas into elegant, scalable solutions with modern web technologies
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
+                <!-- Let's Connect Button -->
+                <a href="https://x.com/NishiShukl53352?t=bdSigP_wehti7tL5RF27Rw&s=08" 
+                   class="px-8 py-4 text-white text-lg font-semibold rounded-full bg-purple-700 hover:bg-indigo-700 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                    Let's Connect
+                </a>
+
+                <!-- Download CV Button -->
+                <a href="#" id="resume-btn" 
+                   class="px-8 py-4 text-gray-800 dark:text-white text-lg font-semibold rounded-full border-2 border-gray-800 dark:border-white flex items-center gap-2 hover:bg-gray-800 hover:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Download CV
+                </a>
+            </div>
         </div>
     </div>
 
     <!-- About Me Section -->
-   <!-- About Me Section -->
-<div id="about" class="w-full px-6 md:px-[12%] py-10 scroll-mt-20">
-    <h4 class="text-center mb-2 text-lg">Introduction</h4>
-    <h2 class="text-center text-5xl">About Me</h2>
+    <div id="about" class="w-full px-6 scroll-mt-20 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 animate-slide-up">
+                <h4 class="text-lg text-indigo-600 font-semibold mb-2">Get To Know Me</h4>
+                <h2 class="text-5xl lg:text-6xl font-space font-bold text-gray-900 dark:text-white mb-6">About Me</h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+            </div>
 
-    <!-- Flexbox for Responsive Layout -->
-    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10 mt-10">
+            <!-- Main Content -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <!-- Text Content -->
+                <div class="space-y-6 animate-slide-up" style="animation-delay: 0.2s;">
+                    <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                        🎯 I'm a passionate <span class="font-bold text-indigo-600">B.Tech student</span> at KIET Group of Institutions, 
+                        specializing in <span class="font-bold text-purple-600">Information Technology</span>. My journey in software 
+                        development is driven by curiosity and the desire to create impactful solutions.
+                    </p>
+                    
+                    <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                        💡 From mastering <span class="font-semibold">Data Structures & Algorithms</span> to building 
+                        full-stack applications, I love turning complex problems into elegant, user-friendly solutions. 
+                        Every line of code I write is a step towards creating something meaningful.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3 mt-6 justify-center">
+                        <span class="px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm font-medium">Problem Solver 🧩</span>
+                        <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium">Full-Stack Developer 💻</span>
+                        <span class="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">Team Player 🤝</span>
+                    </div>
+                </div>
+                
+                <!-- Animated Stats -->
+                <div class="grid grid-cols-2 gap-6 animate-slide-up" style="animation-delay: 0.4s;">
+                    <div class="text-center p-6 rounded-2xl glass-effect hover-lift bg-white dark:bg-gray-800">
+                        <div class="text-4xl font-bold text-gradient mb-2">15+</div>
+                        <p class="text-gray-600 dark:text-gray-400">Projects Completed</p>
+                    </div>
+                    <div class="text-center p-6 rounded-2xl glass-effect hover-lift bg-white dark:bg-gray-800">
+                        <div class="text-4xl font-bold text-gradient mb-2">500+</div>
+                        <p class="text-gray-600 dark:text-gray-400">DSA Problems Solved</p>
+                    </div>
+                    <div class="text-center p-6 rounded-2xl glass-effect hover-lift bg-white dark:bg-gray-800">
+                        <div class="text-4xl font-bold text-gradient mb-2">2+</div>
+                        <p class="text-gray-600 dark:text-gray-400">Years Learning</p>
+                    </div>
+                    <div class="text-center p-6 rounded-2xl glass-effect hover-lift bg-white dark:bg-gray-800">
+                        <div class="text-4xl font-bold text-gradient mb-2">24/7</div>
+                        <p class="text-gray-600 dark:text-gray-400">Coding Passion</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="group p-6 rounded-2xl glass-effect hover-lift text-center animate-slide-up bg-white dark:bg-gray-800">
+                    <div class="text-5xl mb-4 group-hover:animate-bounce">💻</div>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Frontend Magic</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Creating beautiful, responsive user interfaces</p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-xs">HTML5</span>
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">CSS3</span>
+                        <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-xs">JavaScript</span>
+                        <span class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200 rounded-full text-xs">React</span>
+                    </div>
+                </div>
+                
+                <div class="group p-6 rounded-2xl glass-effect hover-lift text-center animate-slide-up bg-white dark:bg-gray-800" style="animation-delay: 0.1s;">
+                    <div class="text-5xl mb-4 group-hover:animate-bounce">🎓</div>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Academic Excellence</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Strong foundation in computer science</p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">B.Tech IT</span>
+                        <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">DSA Expert</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-xs">KIET</span>
+                    </div>
+                </div>
+                
+                <div class="group p-6 rounded-2xl glass-effect hover-lift text-center animate-slide-up bg-white dark:bg-gray-800" style="animation-delay: 0.2s;">
+                    <div class="text-5xl mb-4 group-hover:animate-bounce">🚀</div>
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Project Mastery</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Building real-world applications</p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">Full-Stack</span>
+                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">Backend</span>
+                        <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full text-xs">MongoDB</span>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services" class="w-full px-6 py-20 scroll-mt-20 bg-gray-50 dark:bg-gray-800 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 animate-slide-up">
+                <h4 class="text-lg text-indigo-600 font-semibold mb-2">What I Offer</h4>
+                <h2 class="text-5xl lg:text-6xl font-space font-bold text-gray-900 dark:text-white mb-6">My Services</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    🌟 Turning your digital dreams into reality with cutting-edge solutions and creative expertise
+                </p>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto rounded-full mt-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service 1 -->
+                <div class="group p-8 rounded-2xl glass-effect hover-lift animate-slide-up bg-white dark:bg-gray-800">
+                    <div class="flex items-start gap-6">
+                        <div class="text-5xl group-hover:animate-bounce">🌐</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-indigo-600 transition-colors">
+                                Web Development
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                                Crafting responsive, lightning-fast websites that captivate users and drive results. 
+                                From concept to deployment, I handle every pixel with precision and passion.
+                            </p>
+                            <div class="flex gap-2 mb-4">
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">React</span>
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">Node.js</span>
+                                <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">Responsive</span>
+                            </div>
+                            <a href="#projects" class="text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
+                                Explore Projects →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group p-8 rounded-2xl glass-effect hover-lift animate-slide-up bg-white dark:bg-gray-800" style="animation-delay: 0.1s;">
+                    <div class="flex items-start gap-6">
+                        <div class="text-5xl group-hover:animate-bounce">⚙️</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 transition-colors">
+                                Backend Development
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                                Building robust, scalable server architectures that power seamless user experiences. 
+                                Security, performance, and reliability are at the heart of every solution.
+                            </p>
+                            <div class="flex gap-2 mb-4">
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">APIs</span>
+                                <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-xs">MongoDB</span>
+                                <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-xs">Security</span>
+                            </div>
+                            <a href="#projects" class="text-purple-600 font-semibold hover:text-purple-800 transition-colors">
+                                View Architecture →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group p-8 rounded-2xl glass-effect hover-lift animate-slide-up bg-white dark:bg-gray-800" style="animation-delay: 0.2s;">
+                    <div class="flex items-start gap-6">
+                        <div class="text-5xl group-hover:animate-bounce">☁️</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 transition-colors">
+                                Cloud Solutions
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                                Leveraging Firebase and modern cloud platforms to create scalable, real-time applications 
+                                that grow with your business needs and user demands.
+                            </p>
+                            <div class="flex gap-2 mb-4">
+                                <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-xs">Firebase</span>
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Real-time</span>
+                                <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">Scalable</span>
+                            </div>
+                            <a href="#projects" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                                See Implementations →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group p-8 rounded-2xl glass-effect hover-lift animate-slide-up bg-white dark:bg-gray-800" style="animation-delay: 0.3s;">
+                    <div class="flex items-start gap-6">
+                        <div class="text-5xl group-hover:animate-bounce">🔄</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-green-600 transition-colors">
+                                Version Control & Collaboration
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                                Expert in Git workflows, collaborative development, and maintaining clean, 
+                                well-documented codebases that teams can build upon confidently.
+                            </p>
+                            <div class="flex gap-2 mb-4">
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs">Git</span>
+                                <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">GitHub</span>
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">CI/CD</span>
+                            </div>
+                            <a href="https://github.com/nishishukla18" class="text-green-600 font-semibold hover:text-green-800 transition-colors">
+                                Check Repositories →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects" class="w-full px-6 py-20 scroll-mt-20 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 animate-slide-up">
+                <h4 class="text-lg text-indigo-600 font-semibold mb-2">Portfolio Showcase</h4>
+                <h2 class="text-5xl lg:text-6xl font-space font-bold text-gray-900 dark:text-white mb-6">Featured Projects</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                     A curated collection of projects that demonstrate my passion for creating 
+                    innovative solutions and pushing the boundaries of web development
+                </p>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto rounded-full mt-6"></div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1: Doctor's Portal -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg hover-lift animate-slide-up bg-white dark:bg-gray-800">
+                    <div class="h-64 bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-200 dark:from-blue-900 dark:via-indigo-800 dark:to-purple-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-5 group-hover:bg-opacity-0 transition-all duration-300"></div>
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-white bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90 rounded-full text-sm font-medium text-indigo-800 dark:text-indigo-200">
+                                🏥 Healthcare
+                            </span>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-8xl opacity-30 group-hover:opacity-50 transition-all duration-300 group-hover:animate-pulse">
+                                🩺
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 transition-colors">
+                            Doctor's Portal
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Comprehensive healthcare management system with patient records, appointment scheduling, 
+                            and prescription management. Built with a full-stack approach using React, Node.js, and MongoDB.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Fullstack Project</span>
+                            <a href="https://newpresciptofrotend.onrender.com" target="_blank" rel="noopener noreferrer" 
+                               class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors">
+                                Visit Project
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" 
+                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: MyAI -->
+                <div class="group relative rounded-2xl overflow-hidden shadow-lg hover-lift animate-slide-up bg-white dark:bg-gray-800" style="animation-delay: 0.1s;">
+                    <div class="h-64 bg-gradient-to-br from-cyan-100 via-blue-200 to-indigo-300 dark:from-cyan-900 dark:via-blue-800 dark:to-indigo-700 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black bg-opacity-5 group-hover:bg-opacity-0 transition-all duration-300"></div>
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-white bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90 rounded-full text-sm font-medium text-indigo-800 dark:text-indigo-200">
+                                🤖 MyAI
+                            </span>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-8xl opacity-30 group-hover:opacity-50 transition-all duration-300 group-hover:animate-pulse">
+                                🧠
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 transition-colors">
+                            MyAI Assistant
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Intelligent AI-powered assistant application with natural language processing capabilities. 
+                            Features conversational AI, task automation, and smart responses built with modern JavaScript frameworks.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">AI Project</span>
+                            <a href="https://my-ai-frontend-hwa5.vercel.app/" target="_blank" rel="noopener noreferrer" 
+                               class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors">
+                                View Demo
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" 
+                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="bg-gray-900 dark:bg-gray-950 flex">
+       <div class="max-w-[960px] mx-auto py-16 px-4 text-white grid grid-cols-2 gap-8 items-center justify-center flex-col">
         
-        <!-- Image Section -->
-        <div class="w-full lg:w-1/3 flex justify-center">
-            <img src="./images/user-image.png" alt="About Me" class="w-64 sm:w-80 rounded-3xl">
-        </div>
+        <!-- Left Section -->
+         <div>
+        <h1 class="text-5xl font-bold mb-4">I'M Nishi</h1>
+        <p class="text-gray-400 dark:text-gray-300 text-lg">Full Stack Developer | Learner | Tech Enthusiast</p>
 
-        <!-- Text & Skills Section -->
-        <div class="w-full lg:w-2/3 text-center lg:text-left">
-            <p class="mb-6 text-gray-700">
-                Motivated and detail-oriented Software Engineering student with a strong foundation in Data Structures, Algorithms, and Web Development. Passionate about problem-solving and software development, with hands-on experience in building web applications and working on personal projects. Skilled in HTML, CSS, JavaScript, React, and Python, with a keen interest in backend development and cloud computing.
-            </p>
-
-            <!-- Skills & Info Boxes -->
-            <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl">
-                <li class="border border-gray-400 rounded-xl p-4 hover:bg-[#fcf4ff] hover:-translate-y-1 duration-500 transition hover:shadow-lg">
-                    <img src="./images/code-icon.png" alt="" class="w-7 mt-3">
-                    <h3 class="my-4 font-semibold text-gray-700">Languages</h3>
-                    <p class="text-gray-600 text-sm">HTML, CSS, JavaScript, React, Backend</p>
-                </li>
-                <li class="border border-gray-400 rounded-xl p-4 hover:bg-[#fcf4ff] hover:-translate-y-1 duration-500 transition hover:shadow-lg">
-                    <img src="./images/edu-icon.png" alt="" class="w-7 mt-3">
-                    <h3 class="my-4 font-semibold text-gray-700">Education</h3>
-                    <p class="text-gray-600 text-sm">B.Tech in Information Technology</p>
-                </li>
-                <li class="border border-gray-400 rounded-xl p-4 hover:bg-[#fcf4ff] hover:-translate-y-1 duration-500 transition hover:shadow-lg">
-                    <img src="./images/project-icon.png" alt="" class="w-7 mt-3">
-                    <h3 class="my-4 font-semibold text-gray-700">Projects</h3>
-                    <p class="text-gray-600 text-sm">HTML, CSS, JavaScript, React, Backend</p>
-                </li>
-            </ul>
-
-            <!-- Tools Section -->
-            <h4 class="my-6 text-gray-700">Tools I Use</h4>
-            <ul class="flex flex-wrap justify-center lg:justify-start gap-4">
-                <li class="w-14 aspect-square border border-gray-400 rounded-lg p-2 hover:bg-[#fcf4ff] hover:-translate-y-1 duration-500 transition hover:shadow-lg flex items-center justify-center">
-                    <img src="./images/vscode.png" alt="" class="w-7">
-                </li>
-                <li class="w-14 aspect-square border border-gray-400 rounded-lg p-2 hover:bg-[#fcf4ff] hover:-translate-y-1 duration-500 transition hover:shadow-lg flex items-center justify-center">
-                    <img src="./images/firebase.png" alt="" class="w-7">
-                </li>
-                <li class="w-14 aspect-square border border-gray-400 rounded-lg p-2 hover:bg-[#fcf4ff] hover:-translate-y-1 duration-500 transition hover:shadow-lg flex items-center justify-center">
-                    <img src="./images/mongodb.png" alt="" class="w-7">
-                </li>
-                <li class="w-14 aspect-square border border-gray-400 rounded-lg p-2 hover:bg-[#fcf4ff] hover:-translate-y-1 duration-500 transition hover:shadow-lg flex items-center justify-center">
-                    <img src="./images/git.png" alt="" class="w-7">
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-
-    <!-- Services -->
-<div id="services" class="w-full px-[12%] py-10 scroll-mt-20">
-    <h4 class="text-center mb-2 text-lg">Introduction</h4>
-    <h2 class="text-center text-5xl">Services</h2>
-    <p class="text-center max-w-2xl mx-auto mt-5 mb-12">I'm an aspiring software developer in India</p>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <!-- Service Box 1 -->
-        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 border border-gray-400 rounded-lg p-8">
-            <img src="./images/web-icon.png" alt="" class="w-20">
-            <div class="text-center lg:text-left">
-                <h3 class="text-xl font-semibold">Web Development</h3>
-                <p class="text-gray-600 leading-5 mt-2">I can build full-stack applications...</p>
-                <a href="#" class="text-blue-500 mt-3 inline-block">Read more</a>
-            </div>
-        </div>
-
-        <!-- Service Box 2 -->
-        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 border border-gray-400 rounded-lg p-8">
-            <img src="./images/mongodb.png" alt="" class="w-20">
-            <div class="text-center lg:text-left">
-                <h3 class="text-xl font-semibold">Backend Development</h3>
-                <p class="text-gray-600 leading-5 mt-2">Building robust and scalable backend systems...</p>
-                <a href="#" class="text-blue-500 mt-3 inline-block">Read more</a>
-            </div>
-        </div>
-
-        <!-- Service Box 3 -->
-        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 border border-gray-400 rounded-lg p-8">
-            <img src="./images/firebase.png" alt="" class="w-20">
-            <div class="text-center lg:text-left">
-                <h3 class="text-xl font-semibold">Firebase</h3>
-                <p class="text-gray-600 leading-5 mt-2">Creating intuitive and visually appealing user interfaces...</p>
-                <a href="#" class="text-blue-500 mt-3 inline-block">Read more</a>
-            </div>
-        </div>
-
-        <!-- Service Box 4 -->
-        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6 border border-gray-400 rounded-lg p-8 cursor-pointer">
-            <img src="./images/git.png" alt="" class="w-20">
-            <div class="text-center lg:text-left">
-                <h3 class="text-xl font-semibold">Version Control</h3>
-                <p class="text-gray-600 leading-5 mt-2">Designing efficient and scalable database solutions...</p>
-                <a href="#" class="text-blue-500 mt-3 inline-block">Read more</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <!-- my work -->
-     <!-- My Work Section -->
-<div id="work" class="w-full px-[12%] py-10 scroll-mt-20">
-    <h4 class="text-center mb-2 text-lg">My Portfolio</h4>
-    <h2 class="text-center text-5xl">My Latest Work</h2>
-    <p class="text-center max-w-2xl mx-auto mt-5 mb-12">
-        Welcome to my web development portfolio! Explore a collection of projects showcasing my expertise in web development.
-    </p>
-
-    <!-- Projects Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 my-10">
-
-        <!-- Project 1 -->
-        <div class="aspect-square bg-[url('./images/work-1.png')] bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer shadow-lg group">
-            <div class="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between transition-all duration-500 group-hover:bottom-7">
-                <div>
-                    <h2 class="font-semibold text-sm text-gray-700">Doctor's Website</h2>
-                    <p class="text-gray-600 text-xs">Fullstack Project</p>
-                </div>
-                <a href="https://newpresciptofrotend.onrender.com" class="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-black transition duration-500">
-                    <img src="./images/send-icon.png" class="w-5" alt="">
-                </a>
-            </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="aspect-square bg-[url('./images/work-2.png')] bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer shadow-lg group">
-            <div class="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between transition-all duration-500 group-hover:bottom-7">
-                <div>
-                    <h2 class="font-semibold text-sm text-gray-700">E-Commerce Site</h2>
-                    <p class="text-gray-600 text-xs">React & Firebase</p>
-                </div>
-                <div class="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-black transition duration-500">
-                    <img src="./images/send-icon.png" class="w-5" alt="">
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="aspect-square bg-[url('./images/work-3.png')] bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer shadow-lg group">
-            <div class="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between transition-all duration-500 group-hover:bottom-7">
-                <div>
-                    <h2 class="font-semibold text-sm text-gray-700">Portfolio Website</h2>
-                    <p class="text-gray-600 text-xs">HTML, CSS, JS</p>
-                </div>
-                <div class="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-black transition duration-500">
-                    <img src="./images/send-icon.png" class="w-5" alt="">
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="aspect-square bg-[url('./images/work-4.png')] bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer shadow-lg group">
-            <div class="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between transition-all duration-500 group-hover:bottom-7">
-                <div>
-                    <h2 class="font-semibold text-sm text-gray-700">Dashboard UI</h2>
-                    <p class="text-gray-600 text-xs">React & Tailwind</p>
-                </div>
-                <div class="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-black transition duration-500">
-                    <img src="./images/send-icon.png" class="w-5" alt="">
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
- 
-<!-- Contact Section -->
-<div id="contact" class="w-full px-4 md:px-12 lg:px-24 py-10 scroll-mt-20">
-    <div class="max-w-4xl mx-auto">
-        <h4 class="text-center mb-2 text-lg md:text-xl">Get in Touch</h4>
-        <h2 class="text-center text-3xl md:text-5xl font-medium">Contact Me</h2>
-        <p class="text-center max-w-xl mx-auto mt-5 mb-8 md:mb-12 text-sm md:text-base text-gray-600">
-            Feel free to reach out for collaborations or just to say hi! I'm always open to discussing new projects and ideas.
-        </p>
-
-        <!-- Centered Contact Form -->
-        <div class="flex justify-center">
-            <form class="w-full max-w-lg flex flex-col gap-5 p-4 md:p-6 rounded-lg">
-                <input type="text" placeholder="Your Name" 
-                    class="w-full p-3 text-sm md:text-base border border-gray-300 rounded-lg focus:outline-none focus:border-black">
-                <input type="email" placeholder="Your Email" 
-                    class="w-full p-3 text-sm md:text-base border border-gray-300 rounded-lg focus:outline-none focus:border-black">
-                <textarea placeholder="Your Message" rows="5" 
-                    class="w-full p-3 text-sm md:text-base border border-gray-300 rounded-lg focus:outline-none focus:border-black"></textarea>
-                <button class="bg-black text-white py-3 text-sm md:text-base rounded-lg hover:bg-gray-800 transition duration-300">
-                    Send Message
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-6">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
-      <!-- Left Section -->
-      <div class="text-center md:text-left">
-        <h2 class="text-lg font-semibold">Nishi</h2>
-        <p class="text-sm text-gray-400">Web Developer | Backend | Creator</p>
       </div>
-  
-      <!-- Center Social Links -->
-      <div class="flex space-x-4 my-4 md:my-0">
-        <a href="#" class="text-gray-400 hover:text-white">
-          <span class="material-symbols-outlined text-2xl">code</span>
-        </a>
-        <a href="#" class="text-gray-400 hover:text-white">
-          <span class="material-symbols-outlined text-2xl">work</span>
-        </a>
-        <a href="#" class="text-gray-400 hover:text-white">
-          <span class="material-symbols-outlined text-2xl">alternate_email</span>
-        </a>
-      </div>
-  
-      <!-- Right Section -->
-      <div class="text-center md:text-right">
-        <p class="text-sm text-gray-400">© 2025 Your Nishi. All rights reserved.</p>
+
+        <!-- Right Section (Contact Form) -->
+        <div class="max-w-80">
+          <h1 class="text-2xl font-semibold mb-6">Contact Me</h1>
+          <form action="" class="space-y-4">
+            
+            <!-- Name Input -->
+            <div class="flex items-center border border-gray-600 dark:border-gray-500 rounded-md p-2">
+              <span class="material-symbols-outlined text-gray-400 mr-2">person</span>
+              <input 
+                type="text" 
+                placeholder="Name" 
+                class="bg-transparent text-white placeholder-gray-400 focus:outline-none flex-1"
+              >
+            </div>
+            
+            <!-- Email Input -->
+            <div class="flex items-center border border-gray-600 dark:border-gray-500 rounded-md p-2">
+              <span class="material-symbols-outlined text-gray-400 mr-2">mail</span>
+              <input 
+                type="email" 
+                placeholder="Email" 
+                class="bg-transparent text-white placeholder-gray-400 focus:outline-none flex-1"
+              >
+            </div>
+            
+            <!-- Message Input -->
+            <div class="flex items-start border border-gray-600 dark:border-gray-500 rounded-md p-2">
+              
+              <textarea 
+                cols="30" 
+                rows="5" 
+                placeholder="Message" 
+                class="bg-transparent text-white placeholder-gray-400 focus:outline-none flex-1 resize-none"
+              ></textarea>
+            </div>
+            
+            <!-- Submit Button -->
+            <button 
+              type="submit" 
+              class="w-full bg-purple-600 hover:bg-purple-700 transition-colors text-white font-semibold py-2 rounded-md"
+            >
+              Send Message
+            </button>
+            
+          </form>
+        </div>
+        
       </div>
     </div>
-  </footer>
-  
-  <!-- Google Icons Link -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-  
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-gray-950 text-gray-400 dark:text-gray-300 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p>&copy; 2024 Nishi Shukla. Made with ❤️ and lots of ☕</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
+   
 </body>
 </html>
