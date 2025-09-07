@@ -1,18 +1,9 @@
- 
-        const menuBtn = document.getElementById('menu-btn');
+      const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const sideMenu = document.getElementById('side-menu');
-        // const darkModeToggle = document.getElementById('dark-mode-toggle');
         const resumeBtn = document.getElementById('resume-btn');
         const body = document.body;
         const html = document.documentElement;
-
-        // Check for saved dark mode preference or default to light mode
-        // const currentTheme = localStorage.getItem('theme') || 'light';
-        // if (currentTheme === 'dark') {
-        //     html.classList.add('dark');
-        //     updateDarkModeIcon(true);
-        // }
 
         // Open side menu
         if (menuBtn && sideMenu) {
@@ -43,26 +34,6 @@
             });
         });
 
-        // // Dark mode toggle functionality
-        // function updateDarkModeIcon(isDark) {
-        //     const icon = document.querySelector('.dark-mode-icon');
-        //     if (icon) {
-        //         icon.textContent = isDark ? '☀️' : '🌙';
-        //     }
-        // }
-
-        // if (darkModeToggle) {
-        //     darkModeToggle.addEventListener('click', () => {
-        //         const isDark = html.classList.toggle('dark');
-                
-        //         // Save preference to localStorage
-        //         localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                
-        //         // Update icon
-        //         updateDarkModeIcon(isDark);
-        //     });
-        // }
-
         // Resume download
         if (resumeBtn) {
             resumeBtn.addEventListener('click', (e) => {
@@ -85,4 +56,25 @@
 
         // Observe elements for animation
         document.querySelectorAll('.animate-slide-up').forEach(el => observer.observe(el));
-    
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (sideMenu && !sideMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                sideMenu.classList.add('translate-x-full');
+            }
+        });
+
+        // Prevent body scroll when menu is open
+        const preventScroll = (e) => e.preventDefault();
+        
+        if (menuBtn && sideMenu) {
+            menuBtn.addEventListener('click', () => {
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (closeBtn && sideMenu) {
+            closeBtn.addEventListener('click', () => {
+                document.body.style.overflow = 'auto';
+            });
+        }
