@@ -14,4 +14,3 @@ This is my personal portfolio website built using **HTML, CSS, and JavaScript**.
 - JavaScript  
 - Images & assets stored in `/images` folder  
 
-## 📁 Project Structure
