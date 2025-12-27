@@ -24,7 +24,7 @@
         }
 
         // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
@@ -34,13 +34,13 @@
             });
         });
 
-        // Resume download
-        if (resumeBtn) {
-            resumeBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('Resume download will be available soon!');
-            });
-        }
+        // // Resume download
+        // if (resumeBtn) {
+        //     resumeBtn.addEventListener('click', (e) => {
+        //         e.preventDefault();
+        //         alert('Resume download will be available soon!');
+        //     });
+        // }
 
         // Intersection Observer for animations
         const observerOptions = {
